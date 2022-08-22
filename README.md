@@ -4,8 +4,32 @@ This repo contains all the code from the book [Deep Learning From Scratch](https
 
 It was mostly for me to keep the code I was writing for the book organized, but my hope is readers can clone this repo and step through the code systematically themselves to better understand the concepts.
 
-## Structure
+## Docker
+Below we discuss how to run the `Jupyter notebooks` using **Docker**:
 
+### Development
+To run the notebooks locally, and persist changes made to the notebooks, first
+`git clone` the repo:
+```
+git clone https://github.com/RagingTiger/DLFS_code.git
+```
+Then `cd DLFS_code` and run the following:
+```
+docker run -d \
+           --rm \
+           --name DLFS \
+           -e JUPYTER_ENABLE_LAB=yes \
+           -p 8888:8888 \
+           -v $PWD:/home/jovyan \
+           jupyter/scipy-notebook:lab-3.4.4 && \
+sleep 5 && \
+docker logs DLFS 2>&1 | grep "http://127.0.0.1" | tail -n 1 | awk '{print $2}'
+```
+Click the link (should look similar to:
+http://127.0.0.1:8888/lab?token=LONG_ALPHANUMERIC_STRING) which will
+`automatically` log you in and allow you to start running the *notebooks*. 
+
+## Structure
 Each chapter has two notebooks: a `Code` notebook and a `Math` notebook. Each `Code` notebook contains the Python code for corresponding chapter and can be run start to finish to generate the results from the chapters. The `Math` notebooks were just for me to store the LaTeX equations used in the book, taking advantage of Jupyter's LaTeX rendering functionality.
 
 ### `lincoln`
