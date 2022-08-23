@@ -5,11 +5,14 @@
 *.c
 *.so
 *.o
-*.txt
 
 *data/*
 *.pkl*
 
 *.pt
 *ubyte
-  
+
+*.cache
+*.ipython
+*.jupyter
+*.local
