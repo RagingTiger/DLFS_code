@@ -16,3 +16,6 @@
 *.ipython
 *.jupyter
 *.local
+
+*.gz
+*_history
